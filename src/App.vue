@@ -15,9 +15,14 @@ const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
 const options = {
   geotiff: {
-      bbox: [5.046, 42.9342, 7.2733, 44.1586], // Côte d'Azur
+      //bbox: [5.046, 42.9342, 7.2733, 44.1586], // Côte d'Azur
+      bbox: [-1.406250, 40.647304, 22.236328, 54.007769], // Europe
+      //bbox: [1.351318,48.494768,3.339844,49.260635], // Paris(ish)
+      //bbox: [-51.108398,52.241256,-11.821289,54.316523], // Tiny bit of UK, Ireland and a bit of the Atlantic
       resolution: [100, 100],
-      url: 'https://eox-ideas.s3.eu-central-1.amazonaws.com/ideas_data/AR2_wildlife_simplify_COG_b1_t_final.tif',
+      //url: 'https://eox-ideas.s3.eu-central-1.amazonaws.com/ideas_data/AR2_wildlife_simplify_COG_b1_t_final.tif',
+      url: 'https://eox-ideas.s3.eu-central-1.amazonaws.com/GHS_POP_E2020_GLOBE_R2023A_4326_3ss_V1_0_3857_COG_DEFLATE_cutout.tif',
+      //url: 'https://eox-ideas.s3.eu-central-1.amazonaws.com/gfs_waves_test.tif',
       projection: 'EPSG:4326',
       width: 20,
       height: 10,
@@ -107,8 +112,18 @@ onMounted(async () => {
 
   // Convert geographic coordinates to distances using EPSG:3857
   const bbox = options.geotiff.bbox;
-  const xmin = proj4(options.geotiff.projection, 'EPSG:3857', [bbox[0], bbox[1]]);
-  const xmax = proj4(options.geotiff.projection, 'EPSG:3857', [bbox[2], bbox[3]]);
+
+  console.log(image.geoKeys.ProjectedCSTypeGeoKey);
+
+  if (image.geoKeys.ProjectedCSTypeGeoKey !== 3857) {
+    const xmin = proj4(options.geotiff.projection, 'EPSG:3857', [bbox[0], bbox[1]]);
+    const xmax = proj4(options.geotiff.projection, 'EPSG:3857', [bbox[2], bbox[3]]);
+
+    bbox[0] = xmin[0];
+    bbox[1] = xmin[1];
+    bbox[2] = xmax[0];
+    bbox[3] = xmax[1];
+  }
 
   var gameSize = 20;
   var width = gameSize;
@@ -131,6 +146,8 @@ onMounted(async () => {
     Math.max(wnd[0], wnd[2]),
     Math.max(wnd[1], wnd[3]),
   ];
+
+  console.log(wnd);
 
   let raster = await image.readRasters({
     window: wnd,
