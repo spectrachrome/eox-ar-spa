@@ -21,8 +21,8 @@ const options = {
       //bbox: [-51.108398,52.241256,-11.821289,54.316523], // Tiny bit of UK, Ireland and a bit of the Atlantic
       resolution: [100, 100],
       //url: 'https://eox-ideas.s3.eu-central-1.amazonaws.com/ideas_data/AR2_wildlife_simplify_COG_b1_t_final.tif',
-      url: 'https://eox-ideas.s3.eu-central-1.amazonaws.com/GHS_POP_E2020_GLOBE_R2023A_4326_3ss_V1_0_3857_COG_DEFLATE_cutout.tif',
-      //url: 'https://eox-ideas.s3.eu-central-1.amazonaws.com/gfs_waves_test.tif',
+      url: 'https://eox-ideas.s3.eu-central-1.amazonaws.com/GHS_POP_E2020_GLOBE_R2023A_4326_3ss_V1_0_4326_COG_cutout.tif',
+      //url: 'https://eox-ideas.s3.eu-central-1.amazonaws.com/gfs_waves_test_4326.tif',
       projection: 'EPSG:4326',
       width: 20,
       height: 10,
@@ -113,18 +113,19 @@ onMounted(async () => {
   // Convert geographic coordinates to distances using EPSG:3857
   const bbox = options.geotiff.bbox;
 
-  console.log(image.geoKeys.ProjectedCSTypeGeoKey);
+  console.log(bbox);
+/*
+  const xmin = proj4(options.geotiff.projection, 'EPSG:3857', [bbox[0], bbox[1]]);
+  const xmax = proj4(options.geotiff.projection, 'EPSG:3857', [bbox[2], bbox[3]]);
 
-  if (image.geoKeys.ProjectedCSTypeGeoKey !== 3857) {
-    const xmin = proj4(options.geotiff.projection, 'EPSG:3857', [bbox[0], bbox[1]]);
-    const xmax = proj4(options.geotiff.projection, 'EPSG:3857', [bbox[2], bbox[3]]);
+  console.log(xmin);
+  console.log(xmax);
 
-    bbox[0] = xmin[0];
-    bbox[1] = xmin[1];
-    bbox[2] = xmax[0];
-    bbox[3] = xmax[1];
-  }
-
+  bbox[0] = xmin[0];
+  bbox[1] = xmin[1];
+  bbox[2] = xmax[0];
+  bbox[3] = xmax[1];
+*/
   var gameSize = 20;
   var width = gameSize;
   var height = gameSize;
@@ -168,7 +169,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <a-scene
+  <div id="arScene">
+    <a-scene
       vr-mode-ui="enabled: false;"
       stats
       arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
@@ -182,6 +184,7 @@ onMounted(async () => {
       "></a-entity>
       </a-marker>
     </a-scene>
+  </div>
 </template>
 
 <script>
@@ -190,16 +193,26 @@ onMounted(async () => {
 
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* Force 4:3 aspect ratio */
+
+:deep(canvas.a-canvas) {
+  width: 125vw !important;
+  min-width: 125vw !important;
+  height: 100vw !important;
+  min-height: 100vw !important;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+@media screen and (orientation:portrait) {
+    :deep(canvas.a-canvas) {
+      width: 133.3vh !important;
+      min-width: 125vw !important;
+      height: 100vh !important;
+      min-height: 100vw !important;
+    }
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+/* Landscape */
+@media screen and (orientation:landscape) {
+    /* Landscape styles */
 }
+
 </style>
