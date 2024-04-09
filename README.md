@@ -8,7 +8,7 @@
 
 A building ground for the evaluation of the capabilities of AR in a geospatial environment.
 
-Currently, this is a simple Vue demonstrator application which uses AR.js to instantiate a camera view, register a simple company tag (the one at the top of this document) and then render a globe with our official maps. Please note that this project is still a work-in-progress, so the globe sometimes might not render fully or properly.
+Currently, this is a simple Vue demonstrator application which uses AR.js to instantiate a camera view, and then render a 3D globe with GeoTIFF data expressed as colored radial columns if the Hiro marker is detected.
 
 ## Resources and Links
 
