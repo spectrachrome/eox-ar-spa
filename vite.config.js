@@ -16,4 +16,6 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  // For deploying to GitHub Pages
+  base: '/eox-ar-spa/',
 })
