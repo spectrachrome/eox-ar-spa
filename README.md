@@ -1,6 +1,28 @@
-# Vue 3 + Vite
+![IMG_0178](https://github.com/spectrachrome/eox-ar/assets/94269527/61a4921f-8c43-49df-857e-e39fa22ae61e)
 
-**Without SSL, this AR demonstrator will not function on mobile devices such as Android and iOS smartphones/tablets!**
+![AR Tag](https://github.com/spectrachrome/eox-ar/raw/main/old/public/eox_ar_banner.svg)
+
+# Augmented Reality for Geospatial Applications
+
+**Without SSL, this AR demonstrator will not function on mobile devices such as Android/iOS smartphones and tablets!**
+
+A building ground for the evaluation of the capabilities of AR in a geospatial environment.
+
+Currently, this is a simple Vue demonstrator application which uses AR.js to instantiate a camera view, register a simple company tag (the one at the top of this document) and then render a globe with our official maps. Please note that this project is still a work-in-progress, so the globe sometimes might not render fully or properly.
+
+## Resources and Links
+
+- [AR.js Marker Generator](https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html)
+- [Stemkoski's AR Examples](https://stemkoski.github.io/AR-Examples/)
+- [A Guide To Developing An Augmented Reality Web App](https://3sidedcube.com/en-us/ar-js-a-guide-to-developing-an-augmented-reality-web-app-2/)
+
+- [OpenLayers and Three.js](https://javascript.plainenglish.io/openlayers-and-three-js-99c904eed76c)
+- [Canvas Textures - A-Frame Docs](https://aframe.io/docs/1.5.0/components/material.html#canvas-textures)
+
+## Recommended IDE Setup
+
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+
 
 This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
