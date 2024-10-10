@@ -1,9 +1,6 @@
-![IMG_0178](https://github.com/spectrachrome/eox-ar/assets/94269527/61a4921f-8c43-49df-857e-e39fa22ae61e)
+![eox_ar_banner](https://github.com/user-attachments/assets/3918c2ab-d88b-40c4-8a44-568822db7a81)![IMG_0178](https://github.com/spectrachrome/eox-ar/assets/94269527/61a4921f-8c43-49df-857e-e39fa22ae61e)
 
 <img width="1144" alt="Screenshot 2024-04-09 at 14 26 36" src="https://github.com/spectrachrome/eox-ar-spa/assets/94269527/2746331d-1c45-45b4-8ad3-8623e7af9513">
-
-
-![AR Tag](https://github.com/spectrachrome/eox-ar/raw/main/old/public/eox_ar_banner.svg)
 
 # Augmented Reality for Geospatial Applications
 
